@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Auth</title>
+</head>
+<body>
+    <h1>Authentication Debug</h1>
+    <script>
+        console.log('Auth Token:', localStorage.getItem('authToken'));
+        console.log('User:', localStorage.getItem('user'));
+        console.log('Refresh Token:', localStorage.getItem('refreshToken'));
+        
+        document.body.innerHTML += `
+            <p><strong>Auth Token:</strong> ${localStorage.getItem('authToken') ? 'Present' : 'Missing'}</p>
+            <p><strong>User Data:</strong> ${localStorage.getItem('user') || 'Missing'}</p>
+            <p><strong>Refresh Token:</strong> ${localStorage.getItem('refreshToken') ? 'Present' : 'Missing'}</p>
+        `;
+        
+        if (!localStorage.getItem('authToken')) {
+            document.body.innerHTML += '<p style="color: red;"><strong>Issue: No authentication token found. Please login first!</strong></p>';
+        }
+    </script>
+</body>
+</html>
